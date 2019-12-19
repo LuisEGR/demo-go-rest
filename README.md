@@ -13,4 +13,5 @@ brew install dep
 
 ## 
 
-https://medium.com/mindorks/create-projects-independent-of-gopath-using-go-modules-802260cdfb51
+Framework a utilizar: Echo
+https://echo.labstack.com/middleware/jwt

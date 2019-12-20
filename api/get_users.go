@@ -10,24 +10,6 @@ import (
 	"app/model"
 )
 
-// const (
-// 	host     = "localhost"
-// 	port     = 5434
-// 	user     = "admin"
-// 	password = "admin123"
-// 	dbname   = "admin"
-// )
-
-// CREATE TABLE public.usuario (
-// 	id numeric NULL,
-// 	name varchar NULL,
-// 	"time" timestamp NULL DEFAULT CURRENT_TIMESTAMP
-// );
-
-// INSERT INTO public.usuario (id, "name", "time") VALUES(0, 'user0', CURRENT_TIMESTAMP);
-// INSERT INTO public.usuario (id, "name", "time") VALUES(1, 'user1', CURRENT_TIMESTAMP);
-// INSERT INTO public.usuario (id, "name", "time") VALUES(2, 'user2', CURRENT_TIMESTAMP);
-
 // GetUsers Handler
 func GetUsers(c echo.Context) error {
 

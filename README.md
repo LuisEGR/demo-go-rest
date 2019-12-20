@@ -40,6 +40,26 @@ docker run -p 8080:8080 myService
 
 ---
 
+## Database
+
+Este microservicio se conecta a una base de datos de postgres, los valores de la conexión hay que modificarlos en el archivo `db/db.go`
+
+El script para generar la tabla que se usa es este:
+
+```sql
+CREATE TABLE public.usuario (
+	id numeric NULL,
+	name varchar NULL,
+	"time" timestamp NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO public.usuario (id, "name", "time") VALUES(0, 'user0', CURRENT_TIMESTAMP);
+INSERT INTO public.usuario (id, "name", "time") VALUES(1, 'user1', CURRENT_TIMESTAMP);
+INSERT INTO public.usuario (id, "name", "time") VALUES(2, 'user2', CURRENT_TIMESTAMP);
+```
+
+---
+
 ## Peticiones soportadas en este microservicio:
 
 ### **GET /users**

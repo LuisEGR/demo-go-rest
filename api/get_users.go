@@ -10,13 +10,13 @@ import (
 	"app/model"
 )
 
-const (
-	host     = "localhost"
-	port     = 5434
-	user     = "admin"
-	password = "admin123"
-	dbname   = "admin"
-)
+// const (
+// 	host     = "localhost"
+// 	port     = 5434
+// 	user     = "admin"
+// 	password = "admin123"
+// 	dbname   = "admin"
+// )
 
 // CREATE TABLE public.usuario (
 // 	id numeric NULL,
@@ -42,8 +42,8 @@ func GetUsers(c echo.Context) error {
 
 	dbCon := db.New()
 
-	users := []model.DatoDummy{}
-	dbCon.Select(&users, "SELECT * FROM public.usuario")
+	users := []model.Usuario{}
+	err := dbCon.Select(&users, "SELECT * FROM public.usuario")
 	if err != nil {
 		fmt.Println(err)
 		return c.String(400, "Error en base de datos")

@@ -4,7 +4,7 @@ import (
 	"app/api"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-		_ "github.com/lib/pq"
+	_ "github.com/lib/pq"
 	"os"
 )
 
@@ -26,7 +26,7 @@ func main() {
 	e.GET("/users", api.GetUsers)
 
 	// Borrar Usuario
-	e.DELETE("/user", api.DeleteUser)
+	e.DELETE("/user/:id", api.DeleteUser)
 
 	// Agregar Usuario
 	e.POST("/user", api.PostUser)

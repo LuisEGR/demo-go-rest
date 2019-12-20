@@ -30,6 +30,7 @@ func GetUsers(c echo.Context) error {
 		fmt.Println(err)
 		return c.String(400, "Error en base de datos")
 	}
+	dbCon.Close()
 
 	return c.JSON(http.StatusOK, users)
 	// return c.String(http.StatusOK, "Hello, World!")

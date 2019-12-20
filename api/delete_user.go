@@ -32,6 +32,7 @@ func DeleteUser(c echo.Context) error {
 	}
 
 	// return c.JSON(http.StatusOK, "user")
+	dbCon.Close()
 
 	return c.NoContent(http.StatusOK)
 }

@@ -34,5 +34,6 @@ func PostUser(c echo.Context) error {
 		return c.String(400, "Error en base de datos")
 	}
 
+	dbCon.Close()
 	return c.JSON(http.StatusCreated, user)
 }

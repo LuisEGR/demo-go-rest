@@ -1,12 +1,11 @@
 package main
 
 import (
-	"net/http"
-
+	"app/api"
 	"github.com/labstack/echo/v4"
-	// "github.com/labstack/echo/v4/middlewareandler"
-
-	"go-template/api"
+	"github.com/labstack/echo/v4/middleware"
+		_ "github.com/lib/pq"
+	"os"
 )
 
 func main() {
@@ -14,19 +13,29 @@ func main() {
 	e := echo.New()
 
 	// Middleware
-	// e.Use(middleware.Logger())
-	// e.Use(middleware.Recover())
+	e.Use(middleware.Logger())
 
-	// Routes
-	e.GET("/", hello)
+	// Ejemplo con colores
+	// e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
+	// 	Format: "\x1b[90m[${time_rfc3339}]\x1b[0m [${method} ${uri}][status=${status}]\n",
+	// }))
 
-	e.GET("/db", api.GetDBHandler)
+	e.Use(middleware.Recover())
+
+	// Listar Usuarios
+	e.GET("/users", api.GetUsers)
+
+	// Borrar Usuario
+	e.DELETE("/user", api.DeleteUser)
+
+	// Agregar Usuario
+	e.POST("/user", api.PostUser)
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
 
 	// Start server
-	e.Logger.Fatal(e.Start(":1323"))
-}
-
-// Handler
-func hello(c echo.Context) error {
-	return c.String(http.StatusOK, "Hello, World!")
+	e.Logger.Fatal(e.Start(":" + port))
 }
